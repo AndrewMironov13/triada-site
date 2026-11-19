@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>%SEO_TITLE%</title>
+<meta name="description" content="%SEO_DESCRIPTION%">
+%ROBOTS%
+%VERIFY%
+<link rel="canonical" href="%SITE_URL%">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:site_name" content="ТРИАДА">
+<meta property="og:title" content="%SEO_TITLE%">
+<meta property="og:description" content="%SEO_DESCRIPTION%">
+<meta property="og:url" content="%SITE_URL%">
+<meta property="og:image" content="%SITE_URL%og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="%BASE%favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="%BASE%apple-touch-icon.png">
+<meta name="theme-color" content="#030304">
+<link rel="preload" as="image" href="%M%hero/start-d-bg.jpg" media="(min-width: 761px)">
+<link rel="preload" as="image" href="%M%hero/start-m-bg.jpg" media="(max-width: 760px)">
+<script>if(matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('rm')</script>
+<script type="application/ld+json">%JSON_LD%</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-tg" viewBox="0 0 24 24"><path fill="currentColor" d="M21.9 4.3 18.7 19.4c-.2 1.1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.3-5 9.1-8.2c.4-.4-.1-.6-.6-.2L6.2 13l-4.8-1.5c-1-.3-1.1-1 .2-1.5L20.5 2.9c.9-.3 1.7.2 1.4 1.4Z"/></symbol>
+  <symbol id="i-call" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+  <symbol id="i-arr" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" d="M6 6l12 12M18 6 6 18"/></symbol>
+</svg>
+
+<header class="nav" id="nav">
+  <a class="logo" href="#top" aria-label="ТРИАДА, установочный центр"><img src="%M%logo-mark.png" alt="" width="1355" height="430"></a>
+  <nav class="nav__links" aria-label="Разделы"><a href="#minimum">Базовый минимум</a><a href="#services">Услуги</a><a href="#calc">Подбор</a><a href="#works">Работы</a><a href="#reviews">Отзывы</a><a href="#contacts">Контакты</a></nav>
+  <div class="nav__right">
+    <span class="status" data-live><i></i><span data-live-t>Открыто до 23:00</span></span>
+    <a class="nav__tel" href="tel:%TEL%" data-goal="phone">%TEL_LABEL%</a>
+    <a class="ico ico--max" href="%MAX_URL%" target="_blank" rel="noopener" aria-label="Написать в MAX" data-goal="max"%MAX_HIDDEN%>MAX</a>
+    <a class="ico ico--tg" href="%TG_URL%" target="_blank" rel="noopener" aria-label="Наш Telegram" data-goal="tg"><svg><use href="#i-tg"/></svg></a>
+    <button class="btn btn--r btn--sm nav__book" type="button" data-book>Записаться</button>
+    <button class="ico nav__burger" type="button" data-menu aria-expanded="false" aria-controls="menu" aria-label="Меню"><i></i><i></i><i></i></button>
+  </div>
+</header>
+
+<div class="menu" id="menu" hidden>
+  <nav class="menu__links" aria-label="Разделы">
+    <a href="#minimum" data-close>Минимум</a><a href="#services" data-close>Услуги</a><a href="#calc" data-close>Подбор</a><a href="#works" data-close>Работы</a><a href="#reviews" data-close>Отзывы</a><a href="#contacts" data-close>Контакты</a>
+  </nav>
+  <div class="menu__foot">
+    <a class="btn btn--r" href="tel:%TEL%" data-goal="phone"><svg><use href="#i-call"/></svg>%TEL_LABEL%</a>
+    <p class="menu__soc"><a href="%TG_URL%" target="_blank" rel="noopener">Telegram</a><a href="%VK_URL%" target="_blank" rel="noopener">ВКонтакте</a><a href="%MAX_URL%" target="_blank" rel="noopener"%MAX_HIDDEN%>MAX</a></p>
+  </div>
+</div>
+
+<main>
+<section class="hero intro" id="top" data-tab="start">
+  <h1 class="sr">%SEO_H1%</h1>
+  <div class="scene">
+    <picture><source media="(max-width:760px)" srcset="%M%hero/start-m-bg.jpg"><img class="scene__bg" src="%M%hero/start-d-bg.jpg" alt="" fetchpriority="high"></picture>
+    <div class="scene__shade"></div>
+    <p class="word" id="heroWord" aria-hidden="true"><span>Автозапуск</span></p>
+    <div class="scene__car"><picture><source media="(max-width:760px)" srcset="%M%hero/start-m-car.webp"><img src="%M%hero/start-d-car.webp" alt="Mercedes-Benz GLE с включёнными фарами"></picture></div>
+    <i class="spot" id="spot" aria-hidden="true"></i>
+    <svg class="lead" aria-hidden="true"><line id="leadLine"/></svg>
+    <div class="tag" id="tag" aria-hidden="true"><p class="tag__h"><span class="tag__i" id="tagI"></span><span id="tagA">StarLine</span><time id="tagT">7:40</time></p><b id="tagB">Двигатель запущен</b><small id="tagS">Прогрев 10 минут, в салоне +20°</small></div>
+  </div>
+  <div class="hero__l">
+    <h2 class="line" id="heroLine">Лёд пусть скребут соседи</h2>
+    <p class="sub" id="heroSub">Заводите машину с телефона или брелока. Ставим StarLine, Pandora и Призрак за день</p>
+    <div class="lvl"><div class="lvl__btns" id="lvl" role="radiogroup" aria-label="Насколько громко">%LEVELS%</div>
+      <p class="lvl__out"><span id="lvlWhat"></span><b id="lvlPrice"></b></p></div>
+    <div class="pills" id="tabs" role="tablist" aria-label="Что ставим">%TABS%</div>
+    <div class="cta"><button class="btn btn--r" type="button" id="ctaBtn" data-book>Подобрать автозапуск <span class="arr"><svg><use href="#i-arr"/></svg></span></button><p id="ctaPrice">Автозапуск с установкой <b>от 18 000 ₽</b></p></div>
+  </div>
+  <div class="facts">
+    <span><b><i class="star">★</i>%RATING%</b>%RATING_NOTE%</span>
+    <span><b>Хорошее место</b>отметка Яндекса 2026</span>
+    <span><b>2 центра</b>Шевченко, 2А и Блинова, 9А</span>
+    <span><b>12 месяцев</b>гарантия на работу</span>
+  </div>
+</section>
+
+<section class="sec minimum" id="minimum" aria-labelledby="min-h">
+  <div class="sec__head rv"><p class="eyebrow">Для машины из салона</p><h2 class="big" id="min-h">Базовый минимум</h2><p class="min__punch">Всё, на чём сэкономил завод</p><p class="sec__lead">Ставим комплексом. Отмечаете машину — остальное посчитаем под вашу комплектацию</p></div>
+  <div class="min__grid">
+        %MINIMUM%
+  </div>
+</section>
+
+<section class="sec services" id="services" aria-labelledby="services-h">
+  <div class="sec__head rv"><p class="eyebrow">Что ставим</p><h2 class="big" id="services-h">Услуги</h2><p class="sec__lead">Цены «от» — с установкой. Точную скажем, когда узнаем машину</p></div>
+  <ul class="svc-list">
+      %SERVICES%
+  </ul>
+</section>
+
+<section class="certs" aria-label="Сертифицированный установщик">
+  <p class="certs__names rv"><span>StarLine</span><i></i><span>Pandora</span><i></i><span>Призрак</span></p>
+  <p class="certs__note rv">Сертифицированный установщик всех трёх марок. На работу даём гарантию 12 месяцев</p>
+</section>
+
+<section class="calc" id="calc" aria-labelledby="calc-h">
+  <form class="rig" id="calcForm" onsubmit="return false">
+    <picture class="rig__pic"><source media="(max-width:760px)" srcset="%M%calc-m.jpg"><img src="%M%calc-d.jpg" alt="BMW X5 зимним утром, фары включены" loading="lazy"></picture>
+    <div class="rig__shade"></div>
+    <div class="rig__top"><p class="eyebrow">Три вопроса</p><h2 class="rig__h" id="calc-h">Подбор<br>сигнализации</h2>
+      <p class="rig__lead">Отметьте, как хотите управлять машиной, — покажем модель и цену</p></div>
+    <div class="rig__ui">
+      <fieldset class="step-f"><legend class="step__h"><em>01</em>Как управлять</legend><div class="choice">
+        <label class="ch"><input type="radio" name="ctl" value="fob"><span data-i="key">Брелок</span></label>
+        <label class="ch"><input type="radio" name="ctl" value="phone" checked><span data-i="phone">Телефон</span></label>
+        <label class="ch"><input type="radio" name="ctl" value="both"><span data-i="both">Брелок и телефон</span></label></div></fieldset>
+      <fieldset class="step-f"><legend class="step__h"><em>02</em>Искать машину по GPS</legend><div class="choice">
+        <label class="ch"><input type="radio" name="gps" value="0" checked><span data-i="off">Не нужно</span></label>
+        <label class="ch"><input type="radio" name="gps" value="1"><span data-i="gps">Нужно</span></label></div></fieldset>
+      <fieldset class="step-f"><legend class="step__h"><em>03</em>Машина</legend>
+        <div class="field"><input id="calcCar" name="car" placeholder="Марка и модель, например BMW X5" autocomplete="off" aria-label="Марка и модель"></div>
+        <div class="choice yr" data-yr>
+          <label class="ch"><input type="radio" name="yr" value="до 2015"><span>до 2015</span></label>
+          <label class="ch"><input type="radio" name="yr" value="2015–2020"><span>2015–2020</span></label>
+          <label class="ch"><input type="radio" name="yr" value="2021 и новее"><span>2021 и новее</span></label></div></fieldset>
+    </div>
+    <div class="rig__sum" aria-live="polite"><p class="sum__model" id="kitModel"></p><div class="sum"><span class="from">от</span><span id="sum">30 000</span><small>₽</small></div><p class="sum__list" id="kitList"></p></div>
+    <div class="rig__cta"><button class="btn btn--r" type="button" data-book data-from="calc">Записаться на установку <span class="arr"><svg><use href="#i-arr"/></svg></span></button><a class="btn btn--o" href="tel:%TEL%" data-goal="phone">Позвонить</a></div>
+    <p class="rig__note">Цена с установкой. Ставим StarLine, Pandora и Призрак, на работу даём гарантию 12 месяцев</p>
+  </form>
+</section>
+
+<section class="sec works" id="works" aria-labelledby="works-h">
+  <div class="sec__head rv"><p class="eyebrow">Из нашего бокса</p><h2 class="big" id="works-h">Работы</h2><p class="sec__lead">Ставим каждый день. Свежие работы — в нашем Telegram и ВКонтакте</p>
+    <p class="sec__links"><a class="btn btn--o btn--sm" href="%TG_URL%" target="_blank" rel="noopener" data-goal="tg_channel"><svg><use href="#i-tg"/></svg>Telegram</a><a class="btn btn--o btn--sm" href="%VK_URL%" target="_blank" rel="noopener" data-goal="vk">ВКонтакте</a></p></div>
+  <div class="works__row" tabindex="0" aria-label="Наши работы, листается вбок">
+        %WORKS%
+  </div>
+</section>
+
+<section class="sec how" id="how" aria-labelledby="how-h">
+  <div class="sec__head rv"><p class="eyebrow">Как работаем</p><h2 class="big" id="how-h">Четыре шага</h2></div>
+  <ol class="steps">
+        %STEPS%
+  </ol>
+</section>
+
+<section class="sec reviews" id="reviews" aria-labelledby="reviews-h">
+  <div class="sec__head rv"><p class="eyebrow">Яндекс Карты</p><h2 class="big" id="reviews-h">Отзывы</h2></div>
+  <div class="rating rv"><p class="rating__v"><span>%RATING%</span><i>★★★★★</i></p><p class="rating__n">%RATING_NOTE%<br>Отметка «Хорошее место 2026»</p><a class="btn btn--o btn--sm" href="%REVIEWS_URL%" target="_blank" rel="noopener" data-goal="reviews">Все отзывы <svg><use href="#i-arr"/></svg></a></div>
+  <div class="revs__row" tabindex="0" aria-label="Отзывы, листаются вбок">
+        %REVIEWS%
+  </div>
+</section>
+
+<section class="sec faq" id="faq" aria-labelledby="faq-h">
+  <div class="sec__head rv"><p class="eyebrow">Частые вопросы</p><h2 class="big" id="faq-h">Вопросы</h2></div>
+  <div class="qas">
+        %FAQ%
+  </div>
+</section>
+
+<section class="sec contacts" id="contacts" aria-labelledby="contacts-h">
+  <div class="sec__head rv"><p class="eyebrow">Саратов</p><h2 class="big" id="contacts-h">Приезжайте</h2><p class="sec__lead">Два центра, работаем без выходных. Запишитесь, чтобы не ждать</p></div>
+  <div class="centers">
+        %CENTERS%
+  </div>
+  <div class="contacts__cta rv"><button class="btn btn--r" type="button" data-book>Записаться на установку <span class="arr"><svg><use href="#i-arr"/></svg></span></button>
+    <p class="contacts__soc"><a href="%TG_URL%" target="_blank" rel="noopener" data-goal="tg_channel">Telegram</a><a href="%VK_URL%" target="_blank" rel="noopener" data-goal="vk">ВКонтакте</a><a href="%IG_URL%" target="_blank" rel="noopener" data-goal="instagram">Instagram*</a><a href="%MAX_URL%" target="_blank" rel="noopener" data-goal="max"%MAX_HIDDEN%>MAX</a></p></div>
+</section>
+</main>
+
+<footer class="foot" id="foot">
+  <div class="foot__l"><img src="%M%logo-mark.png" alt="ТРИАДА" width="1355" height="430" loading="lazy"><p>%LEGAL%</p></div>
+  <div class="foot__r">
+    <p><a href="%BASE%politika/">Политика конфиденциальности</a></p>
+    <p class="foot__meta">* Instagram принадлежит Meta, признанной в России экстремистской организацией</p>
+    <p><a href="https://mirwebstudio.ru" target="_blank" rel="noopener">Сайт&nbsp;— МирВеб</a></p>
+  </div>
+</footer>
+
+<div class="dock" data-dock><button class="btn btn--r" type="button" data-book>Записаться</button><a class="ico" href="tel:%TEL%" aria-label="Позвонить" data-goal="phone"><svg><use href="#i-call"/></svg></a></div>
+
+<dialog class="book" id="book" aria-labelledby="book-h">
+  <form class="book__panel" data-book-form novalidate>
+    <button class="ico book__x" type="button" data-book-close aria-label="Закрыть"><svg><use href="#i-x"/></svg></button>
+    <p class="eyebrow">Запись</p>
+    <h2 class="book__h" id="book-h">Запишитесь на установку</h2>
+    <p class="book__lead">Перезвоним, уточним машину и подберём время</p>
+    <fieldset><legend>Что ставим</legend><div class="chips" data-book-svc></div></fieldset>
+    <p class="book__in" data-book-kit hidden></p>
+    <div class="book__row">
+      <label class="fld"><span>Машина</span><input name="car" autocomplete="off" placeholder="Марка и модель"></label>
+      <fieldset class="fld"><legend>Год выпуска</legend><div class="seg" data-book-year><label><input type="radio" name="year" value="до 2015"><span>до 2015</span></label><label><input type="radio" name="year" value="2015–2020"><span>2015–2020</span></label><label><input type="radio" name="year" value="2021 и новее"><span>2021+</span></label></div></fieldset>
+    </div>
+    <div class="book__row">
+      <label class="fld"><span>Телефон</span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7" required></label>
+      <label class="fld"><span>Имя</span><input name="name" autocomplete="given-name" placeholder="Как к вам обращаться"></label>
+    </div>
+    <p class="book__err" data-book-err hidden></p>
+    <button class="btn btn--r book__send" type="submit">Отправить заявку <span class="arr"><svg><use href="#i-arr"/></svg></span></button>
+    <p class="book__alt">или позвоните: <a href="tel:%TEL%" data-goal="phone">%TEL_LABEL%</a></p>
+    <p class="book__legal">Отправляя заявку, вы соглашаетесь на обработку персональных данных по <a href="%BASE%politika/">политике</a></p>
+    <div class="book__ok" data-book-ok hidden><p class="book__h">Заявка у нас</p><p class="book__lead">Перезвоним в рабочее время. Если срочно — звоните: <a href="tel:%TEL%">%TEL_LABEL%</a></p><button class="btn btn--o" type="button" data-book-close>Закрыть</button></div>
+  </form>
+</dialog>
+
+<script type="module" src="/src/main.ts"></script>
+</body>
+</html>

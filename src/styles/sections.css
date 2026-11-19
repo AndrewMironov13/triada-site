@@ -1,0 +1,239 @@
+/* Блоки ниже первого экрана, шапка при прокрутке, меню, окно записи. Язык «Студии»: чёрный, огромные узкие слова, пилюли, красный — точкой */
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+html.is-locked{overflow:hidden}
+
+/* шапка: после первого экрана — плотная полоса сверху */
+.nav{transition:background .3s,transform .35s var(--ease),padding .3s}
+.nav.nav--fixed{position:fixed;padding-top:1.2rem;padding-bottom:1.2rem;background:rgba(3,3,4,.82);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border-bottom:1px solid var(--line);animation:navIn .35s var(--ease)}
+.nav.nav--fixed .logo img{height:3.8rem}
+.nav.nav--hide{transform:translateY(-100%)}
+@keyframes navIn{from{transform:translateY(-100%)}to{transform:none}}
+.nav__burger{display:none;gap:.4rem;align-content:center}
+.nav__burger i{display:block;width:1.6rem;height:1.5px;background:#fff;border-radius:1px;transition:transform .3s var(--ease),opacity .2s}
+.menu-open .nav__burger i:nth-child(1){transform:translateY(.55rem) rotate(45deg)}
+.menu-open .nav__burger i:nth-child(2){opacity:0}
+.menu-open .nav__burger i:nth-child(3){transform:translateY(-.55rem) rotate(-45deg)}
+.menu{position:fixed;inset:0;z-index:19;background:rgba(3,3,4,.97);display:flex;flex-direction:column;justify-content:space-between;padding:9rem 1.6rem 3rem}
+.menu[hidden]{display:none}
+.menu__links{display:grid;gap:.4rem}
+.menu__links a{font-family:var(--cond);font-weight:900;font-size:5.6rem;line-height:1;text-transform:uppercase;letter-spacing:.005em}
+.menu__foot{display:grid;gap:1.6rem}
+.menu__foot .btn{width:100%}
+.menu__soc{display:flex;gap:2.4rem;font-size:1.5rem;color:var(--mute2)}
+
+/* общий вид блока */
+.sec{position:relative;padding:12rem 4.8rem 4rem}
+/* якоря из меню не уезжают под шапку */
+section[id]{scroll-margin-top:7rem}
+.book__lead a,.nowrap{white-space:nowrap}
+.sec__head{display:grid;gap:1.4rem;margin-bottom:4.8rem;max-width:90rem}
+.big{font-family:var(--cond);font-weight:900;font-size:16rem;line-height:.84;text-transform:uppercase;letter-spacing:.004em;color:#e6e7ea;margin-top:.2rem}
+.sec__lead{font-size:1.8rem;color:var(--mute2);max-width:56rem}
+.sec__links{display:flex;gap:.8rem;margin-top:1rem}
+
+/* появление при прокрутке (motion inView); без JS всё видно */
+.js .rv{opacity:0;transform:translateY(2.4rem)}
+.js .rv.in{opacity:1;transform:none;transition:opacity .8s var(--ease) var(--d,0s),transform .9s var(--ease) var(--d,0s)}
+
+.book__demo{margin-top:-.4rem;padding:1rem 1.4rem;border-radius:1.2rem;border:1px dashed var(--line2);font-size:1.4rem;color:var(--mute2)}
+
+/* «Базовый минимум»: акцентный блок сразу после первого экрана */
+.min__punch{font-weight:600;font-size:4rem;line-height:1.1;letter-spacing:-.01em;color:#fff;margin-top:1rem}
+.min__grid{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem}
+.mcard{position:relative;min-width:0;display:flex;flex-direction:column;gap:1.2rem;padding:3.6rem 3.6rem 3.2rem;border-radius:2.4rem;background:var(--ink2);border:1px solid var(--line)}
+.mcard::before{content:'';position:absolute;left:3.6rem;right:3.6rem;top:-1px;height:2px;background:var(--red)}
+.mcard__for{display:flex;flex-direction:column;font-family:var(--cond);font-weight:900;font-size:8.8rem;line-height:.86;text-transform:uppercase;letter-spacing:.004em;color:#e6e7ea}
+.mcard__for span{font-family:var(--body);font-weight:500;font-size:1.3rem;line-height:1;letter-spacing:.14em;color:var(--mute);margin-bottom:1.4rem}
+.mcard__cars{font-size:1.6rem;color:var(--mute2)}
+.mcard__list{list-style:none;margin:1.6rem 0 2.8rem;border-top:1px solid var(--line)}
+.mcard__list li{display:flex;justify-content:space-between;align-items:baseline;gap:1.6rem;padding:1.7rem 0;border-bottom:1px solid var(--line)}
+.mcard__list b{font-weight:600;font-size:2rem}
+.mcard__list em{font-style:normal;font-size:1.7rem;color:var(--mute2);white-space:nowrap}
+.mcard__go{align-self:flex-start;margin-top:auto}
+
+/* услуги: прайс строками */
+.svc-list{list-style:none;border-top:1px solid var(--line)}
+.svc{display:grid;grid-template-columns:5rem 34rem 1fr 18rem 5.2rem;align-items:center;gap:2.4rem;padding:2.4rem 0;border-bottom:1px solid var(--line);transition:background .3s}
+.svc__n{font-size:1.3rem;color:var(--mute);letter-spacing:.12em}
+.svc__name{font-family:var(--cond);font-weight:900;font-size:5.6rem;line-height:.9;text-transform:uppercase;letter-spacing:.005em}
+.svc__text{font-size:1.6rem;color:var(--mute2);max-width:50rem}
+.svc__price{font-weight:600;font-size:1.8rem;white-space:nowrap;text-align:right}
+.svc__go{width:5.2rem;height:5.2rem;border-radius:50%;border:1px solid var(--line2);display:grid;place-items:center;transition:background .3s,border-color .3s,transform .3s var(--ease)}
+.svc__go svg{width:1.8rem;height:1.8rem;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.svc:hover .svc__go{background:var(--red);border-color:var(--red);transform:translateX(.4rem)}
+.svc:hover .svc__name{color:#fff}
+
+/* сертифицированный установщик: три марки широким шрифтом логотипа */
+.certs{padding:8rem 4.8rem 8rem;text-align:center;display:grid;gap:2rem;justify-items:center}
+.certs__names{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:2.4rem 3.2rem;font-family:var(--wide);font-weight:800;font-size:5.6rem;line-height:1;letter-spacing:-.01em;text-transform:uppercase;color:#e6e7ea}
+.certs__names i{width:1.2rem;height:1.2rem;border-radius:50%;background:var(--red);flex:none}
+.certs__note{font-size:1.8rem;color:var(--mute2);max-width:60rem}
+
+/* работы: лента вбок */
+.works__row,.revs__row{display:grid;grid-auto-flow:column;grid-auto-columns:38rem;gap:1.6rem;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:4.8rem;margin:0 -4.8rem;padding:0 4.8rem 2rem;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.2) transparent;outline:none}
+.work{scroll-snap-align:start;border-radius:2rem;overflow:hidden;background:var(--ink2);border:1px solid var(--line)}
+.work img{width:100%;aspect-ratio:4/5;object-fit:cover;filter:saturate(.9) contrast(1.04)}
+.work figcaption{display:grid;gap:.3rem;padding:1.6rem 1.8rem 2rem}
+.work b{font-weight:600;font-size:1.7rem}
+.work span{font-size:1.4rem;color:var(--mute2)}
+
+/* как работаем */
+.steps{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:1.6rem}
+.step{border-top:2px solid var(--line2);padding-top:2.4rem;display:grid;gap:1rem;align-content:start}
+.step:first-child{border-top-color:var(--red)}
+.step__n{font-family:var(--cond);font-weight:900;font-size:8rem;line-height:.8;color:rgba(255,255,255,.16)}
+.step h3{font-weight:600;font-size:2.4rem;line-height:1.1;letter-spacing:-.02em}
+.step p{font-size:1.55rem;color:var(--mute2)}
+
+/* отзывы */
+.rating{display:flex;align-items:center;gap:3.2rem;margin:-2rem 0 3.6rem;flex-wrap:wrap}
+.rating__v{display:flex;align-items:flex-end;gap:1.6rem}
+.rating__v span{font-family:var(--cond);font-weight:900;font-size:12rem;line-height:.8}
+.rating__v i{font-style:normal;color:var(--red2);font-size:2.2rem;letter-spacing:.2em;margin-bottom:.8rem}
+.rating__n{font-size:1.5rem;color:var(--mute2);line-height:1.5}
+.btn svg{width:1.6rem;height:1.6rem}
+.revs__row{grid-auto-columns:44rem}
+.rev{scroll-snap-align:start;display:flex;flex-direction:column;justify-content:space-between;gap:2.4rem;padding:2.8rem;border-radius:2rem;background:var(--ink2);border:1px solid var(--line);min-height:28rem}
+.rev blockquote{font-weight:500;font-size:2.2rem;line-height:1.3;letter-spacing:-.01em}
+.rev figcaption{display:grid;gap:.2rem}
+.rev b{font-weight:600;font-size:1.5rem}
+.rev span{font-size:1.3rem;color:var(--mute)}
+
+/* вопросы */
+.qas{border-top:1px solid var(--line);max-width:110rem}
+.qa{border-bottom:1px solid var(--line)}
+.qa summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:2.4rem;padding:2.6rem 0;cursor:pointer;font-weight:600;font-size:2.4rem;letter-spacing:-.015em}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary i{position:relative;width:4.4rem;height:4.4rem;border-radius:50%;border:1px solid var(--line2);flex:none;transition:background .3s,border-color .3s,transform .4s var(--ease)}
+.qa summary i::before,.qa summary i::after{content:"";position:absolute;left:50%;top:50%;width:1.4rem;height:1.5px;margin:-.75px 0 0 -.7rem;background:#fff}
+.qa summary i::after{transform:rotate(90deg)}
+.qa[open] summary i{transform:rotate(45deg);background:var(--red);border-color:var(--red)}
+.qa p{padding:0 8rem 2.8rem 0;font-size:1.7rem;color:var(--mute2);max-width:80rem}
+
+/* контакты */
+.centers{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem}
+.center{display:grid;gap:1.2rem;padding:3.2rem;border-radius:2.4rem;background:var(--ink2);border:1px solid var(--line)}
+.center__name{display:flex;align-items:baseline;gap:1.4rem;font-family:var(--cond);font-weight:900;font-size:5.6rem;line-height:.9;text-transform:uppercase}
+.center__name span{font-family:var(--body);font-weight:400;font-size:1.4rem;color:var(--mute);text-transform:none;letter-spacing:0}
+.center__street{font-weight:600;font-size:2.2rem}
+.center__hours{display:flex;align-items:center;gap:.8rem;font-size:1.5rem;color:var(--mute2)}
+.center__hours i{width:.7rem;height:.7rem;border-radius:50%;background:#3ad16b;box-shadow:0 0 .8rem rgba(58,209,107,.7)}
+.center__acts{display:flex;gap:.8rem;margin-top:1.2rem;flex-wrap:wrap}
+.contacts__cta{display:flex;align-items:center;justify-content:space-between;gap:2.4rem;margin-top:3.2rem;flex-wrap:wrap}
+.contacts__soc{display:flex;gap:2.8rem;font-size:1.5rem;color:var(--mute2)}
+.contacts__soc a:hover{color:#fff}
+
+/* подвал */
+.foot{display:flex;justify-content:space-between;align-items:flex-end;gap:3.2rem;padding:6rem 4.8rem 4rem;margin-top:8rem;border-top:1px solid var(--line);font-size:1.3rem;color:var(--mute)}
+.foot__l{display:grid;gap:1.6rem}
+.foot__l img{height:4.2rem;width:auto;opacity:.9}
+.foot__r{display:grid;gap:.8rem;justify-items:end;text-align:right}
+.foot a{color:var(--mute2)}
+.foot a:hover{color:#fff}
+.foot__meta{font-size:1.15rem;max-width:40rem}
+
+/* нижняя панель на телефоне */
+.dock{display:none}
+
+/* окно записи */
+.book{margin:auto;padding:0;border:0;background:transparent;color:#fff;max-width:none;max-height:none;width:100%;height:100%;overscroll-behavior:contain}
+.book::backdrop{background:rgba(0,0,0,.72);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.book[open]{display:grid;place-items:center}
+.book__panel{position:relative;width:min(64rem,calc(100% - 3.2rem));max-height:calc(100dvh - 4rem);overflow:auto;padding:4rem;border-radius:2.8rem;background:#0b0b0d;border:1px solid var(--line);display:grid;gap:2rem}
+.book__x{position:absolute;right:2rem;top:2rem}
+.book__h{font-family:var(--cond);font-weight:900;font-size:6.4rem;line-height:.86;text-transform:uppercase;letter-spacing:.005em;margin-top:-.6rem}
+.book__lead{font-size:1.6rem;color:var(--mute2)}
+.book fieldset{border:0;min-width:0}
+.book legend,.fld>span{display:block;font-size:1.2rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);margin-bottom:1rem}
+.chips{display:flex;flex-wrap:wrap;gap:.6rem}
+.chip{height:4.2rem;padding:0 1.6rem;border-radius:99rem;border:1px solid var(--line2);font-size:1.45rem;color:var(--mute2);transition:background .25s,color .25s,border-color .25s}
+.chip:hover{border-color:#fff;color:#fff}
+.chip.on{background:#fff;color:#08080a;border-color:#fff;font-weight:500}
+.book__in{font-size:1.4rem;color:var(--mute2);padding:1.2rem 1.6rem;border-radius:1.4rem;background:rgba(255,255,255,.05);border:1px solid var(--line)}
+.book__in b{color:#fff;font-weight:500}
+.book__row{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+.fld{display:block}
+.fld input{width:100%;height:5.2rem;padding:0 1.8rem;border-radius:1.4rem;border:1px solid var(--line2);background:rgba(255,255,255,.03);font-size:1.6rem}
+.fld input:focus{outline:none;border-color:#fff}
+.fld input::placeholder{color:var(--mute)}
+.seg{display:flex;gap:.4rem;padding:.4rem;border-radius:1.4rem;border:1px solid var(--line2);height:5.2rem}
+.seg label{flex:1;position:relative;cursor:pointer}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg span{display:grid;place-items:center;height:100%;border-radius:1rem;font-size:1.35rem;color:var(--mute2);transition:background .25s,color .25s}
+.seg input:checked+span{background:#fff;color:#08080a;font-weight:500}
+.seg.ask{border-color:var(--red2);animation:shake .4s}
+@keyframes shake{25%{transform:translateX(-.4rem)}75%{transform:translateX(.4rem)}}
+.book__err{font-size:1.4rem;color:var(--red2)}
+.book__send{width:100%;height:5.8rem;font-size:1.7rem}
+.book__send[disabled]{opacity:.6;pointer-events:none}
+.book__alt{text-align:center;font-size:1.45rem;color:var(--mute2)}
+.book__alt a{color:#fff;font-weight:500}
+.book__legal{text-align:center;font-size:1.15rem;color:var(--mute)}
+.book__legal a{text-decoration:underline}
+.book__ok{display:grid;gap:1.6rem;justify-items:start}
+.book__ok[hidden]{display:none}
+.book.done [data-book-form]>*:not(.book__ok):not(.book__x){display:none}
+
+@media (max-width:1100px) and (min-width:761px){
+  .svc{grid-template-columns:4rem 26rem 1fr 14rem 5.2rem}
+  .svc__name{font-size:4.6rem}
+}
+@media (max-width:760px){
+  .min__punch{font-size:2.6rem}
+  .min__grid{grid-template-columns:minmax(0,1fr);gap:1.2rem}
+  .mcard{padding:2.8rem 2rem 2.4rem;border-radius:2rem}
+  .mcard::before{left:2rem;right:2rem}
+  .mcard__for{font-size:5.4rem}
+  .mcard__list{margin:1.2rem 0 2.4rem}
+  .mcard__list li{padding:1.4rem 0}
+  .mcard__list b{font-size:1.7rem}
+  .mcard__list em{font-size:1.5rem}
+  .mcard__go{width:100%;align-self:stretch}
+  .nav{position:absolute}
+  .nav__burger{display:grid}
+  .nav.nav--fixed .logo img{height:3.2rem}
+  .sec{padding:8rem 1.6rem 2rem}
+  .sec__head{margin-bottom:3.2rem;gap:1rem}
+  .big{font-size:7.4rem}
+  .sec__lead{font-size:1.55rem}
+  .svc{grid-template-columns:1fr 4.6rem;grid-template-areas:"name go" "text text" "price price";gap:.8rem 1.2rem;padding:2rem 0}
+  .svc__n{display:none}
+  .svc__name{grid-area:name;font-size:4.4rem}
+  .svc__text{grid-area:text;font-size:1.45rem}
+  .svc__price{grid-area:price;text-align:left;font-size:1.6rem}
+  .svc__go{grid-area:go;width:4.6rem;height:4.6rem}
+  .certs{padding:6rem 1.6rem}
+  .certs__names{flex-direction:column;font-size:3.4rem;gap:1rem}
+  .certs__names i{display:none}
+  .certs__note{font-size:1.5rem}
+  .works__row,.revs__row{margin:0 -1.6rem;padding:0 1.6rem 1.6rem;scroll-padding-inline:1.6rem;grid-auto-columns:80%}
+  .steps{grid-template-columns:1fr 1fr;gap:2.4rem 1.2rem}
+  .step__n{font-size:6rem}
+  .step h3{font-size:1.9rem}
+  .step p{font-size:1.4rem}
+  .rating{gap:1.6rem;margin:-1rem 0 2.4rem}
+  .rating__v span{font-size:9rem}
+  .rev{padding:2.2rem;min-height:24rem}
+  .rev blockquote{font-size:1.8rem}
+  .qa summary{font-size:1.8rem;padding:2rem 0;gap:1.6rem}
+  .qa summary i{width:3.8rem;height:3.8rem}
+  .qa p{padding:0 0 2.2rem;font-size:1.5rem}
+  .centers{grid-template-columns:1fr}
+  .center{padding:2.4rem}
+  .center__name{font-size:4.4rem;flex-wrap:wrap;gap:.4rem 1.2rem}
+  .center__street{font-size:1.9rem}
+  .center__acts .btn{flex:1}
+  .contacts__cta{display:grid;justify-items:stretch}
+  .contacts__soc{flex-wrap:wrap;gap:1.6rem 2.4rem}
+  .foot{display:grid;justify-items:start;padding:4rem 1.6rem 11rem;margin-top:4rem}
+  .foot__r{justify-items:start;text-align:left}
+  .dock{position:fixed;z-index:30;left:1.2rem;right:1.2rem;bottom:calc(1.2rem + env(safe-area-inset-bottom));display:flex;gap:.8rem;padding:.6rem;border-radius:99rem;background:rgba(18,18,21,.84);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid var(--line);opacity:0;pointer-events:none;transform:translateY(1rem);transition:opacity .3s,transform .3s}
+  .dock.show{opacity:1;pointer-events:auto;transform:none}
+  .dock .btn{flex:1;height:4.8rem}
+  .dock .ico{width:4.8rem;height:4.8rem}
+  .book[open]{place-items:end center}
+  .book__panel{width:100%;max-height:92dvh;border-radius:2.4rem 2.4rem 0 0;padding:2.8rem 1.6rem calc(2.4rem + env(safe-area-inset-bottom));gap:1.6rem}
+  .book__x{right:1.4rem;top:1.4rem}
+  .book__h{font-size:4.6rem}
+  .book__row{grid-template-columns:1fr}
+}
