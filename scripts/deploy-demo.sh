@@ -12,7 +12,7 @@ cd "$TMP"
 git init -q -b gh-pages
 git add -A
 git -c user.name="Andrew Mironov" -c user.email="AndrewMironov13@users.noreply.github.com" commit -q -m "Демо $(date '+%d.%m.%Y %H:%M')"
-git push -q -f "$REMOTE" gh-pages
+for i in 1 2 3 4; do git -c http.postBuffer=157286400 push -q -f "$REMOTE" gh-pages && break; echo "повтор $i"; sleep 5; done
 cd - >/dev/null
 rm -rf "$TMP"
 echo "Готово: https://andrewmironov13.github.io/triada-site/ (обновится через 1–2 минуты)"
