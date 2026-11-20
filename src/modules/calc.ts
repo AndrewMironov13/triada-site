@@ -19,8 +19,9 @@ export function initCalc() {
   function recalc() {
     let ctl = $<HTMLInputElement>('input[name=ctl]:checked').value
     const gps = $<HTMLInputElement>('input[name=gps]:checked').value === '1'
-    // GPS работает через приложение: с одним брелоком переключаем на «брелок и телефон»
-    if (ctl === 'fob' && gps) { ctl = 'both'; $<HTMLInputElement>('input[name=ctl][value=both]').checked = true }
+    // GPS смотрят в приложении, поэтому «брелок + GPS» — тот же комплект, что «брелок и телефон + GPS».
+    // Выбор человека не трогаем: раньше кнопка сама перескакивала на «Брелок и телефон», 20.11 Константин: «работает некорректно»
+    if (ctl === 'fob' && gps) ctl = 'both'
     const k = (KIT as Record<string, { m: string; e: string; p: number; what: string }>)[ctl + (gps ? '+gps' : '')] ?? KIT[ctl as keyof typeof KIT]
     $('#kitModel').innerHTML = `${k.m} <span>${k.e}</span>`
     if (shown !== null && shown !== k.p && !still) sum.animate([{ opacity: 0.3, transform: 'translateY(.6rem)' }, { opacity: 1, transform: 'none' }], { duration: 420, easing: 'cubic-bezier(.22,1,.36,1)' })
