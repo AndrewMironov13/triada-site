@@ -59,7 +59,7 @@ function message(lead) {
   return rows.join('\n')
 }
 
-async function sendTelegram(token, chatId, text) {
+async function sendTelegram(token, chatId, text, retry = true) {
   const api = (process.env.TG_API || 'https://api.telegram.org').replace(/\/$/, '')
   const r = await fetch(`${api}/bot${token}/sendMessage`, {
     method: 'POST',
@@ -67,7 +67,13 @@ async function sendTelegram(token, chatId, text) {
     body: JSON.stringify({ chat_id: chatId, text, parse_mode: 'HTML', link_preview_options: { is_disabled: true } }),
     signal: AbortSignal.timeout(8000),
   })
-  if (!r.ok) throw new Error(`telegram ${r.status}`)
+  if (r.ok) return
+  // группу перевели в супергруппу (меняли настройки или права) — у неё новый id, шлём туда.
+  // В переменной функции id надо обновить: lead-function/.chat-id и deploy.sh
+  const d = await r.json().catch(() => ({}))
+  const to = d?.parameters?.migrate_to_chat_id
+  if (retry && to) return sendTelegram(token, String(to), text, false)
+  throw new Error(`telegram ${r.status}${d?.description ? ': ' + d.description : ''}`)
 }
 
 function reply(status, origin, body) {

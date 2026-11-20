@@ -2,7 +2,12 @@
 import { createRequire } from 'node:module'
 const require = createRequire(import.meta.url)
 const sent = []
-globalThis.fetch = async (url, opt) => { sent.push({ url: url.replace(/bot[^/]+/, 'bot<ключ>'), body: JSON.parse(opt.body) }); return { ok: true, status: 200 } }
+globalThis.fetch = async (url, opt) => {
+  const body = JSON.parse(opt.body)
+  // старая группа -1001 «переехала» в супергруппу -1009: Telegram отвечает 400 с новым id
+  if (body.chat_id === '-1001') return { ok: false, status: 400, json: async () => ({ ok: false, description: 'group chat was upgraded to a supergroup chat', parameters: { migrate_to_chat_id: -1009 } }) }
+  sent.push({ url: url.replace(/bot[^/]+/, 'bot<ключ>'), body }); return { ok: true, status: 200 }
+}
 process.env.TG_TOKEN = 'test'; process.env.TG_CHAT_ID = '-1001;-1002'; process.env.ALLOWED_ORIGINS = 'https://andrewmironov13.github.io;http://127.0.0.1:5292'
 const { handler, _test } = require('./src/index.js')
 const ev = (body, origin = 'https://andrewmironov13.github.io', method = 'POST', ip = '1.1.1.1') => ({ httpMethod: method, headers: { Origin: origin, 'Content-Type': 'text/plain' }, body: typeof body === 'string' ? body : JSON.stringify(body), isBase64Encoded: false, requestContext: { identity: { sourceIp: ip } } })
@@ -29,6 +34,9 @@ for (const [name, e, code, msgs] of cases) {
 let last
 for (let i = 0; i < 6; i++) last = await handler(ev(lead, undefined, 'POST', '9.9.9.9'))
 console.log(last.statusCode === 429 ? 'ок ' : 'ОШИБКА', 'шестая подряд', last.statusCode); if (last.statusCode !== 429) fail++
+sent.length = 0; await handler(ev(lead, undefined, 'POST', '7.7.7.7'))
+const moved = sent.some((m) => m.body.chat_id === '-1009')
+console.log(moved ? 'ок ' : 'ОШИБКА', 'группа стала супергруппой — заявка ушла по новому id'); if (!moved) fail++
 console.log('\nТелефоны:', ['89001234567', '+7 900 123 45 67', '9001234567', '12'].map(_test.phoneOf))
 console.log('\nТак выглядит сообщение в группе:\n' + _test.message(lead))
 process.exit(fail ? 1 : 0)
