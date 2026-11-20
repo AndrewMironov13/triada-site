@@ -1,0 +1,5 @@
+# Выкладка: cd tg-relay && ~/crm/node_modules/.bin/wrangler deploy  → https://triada-tg.mirweb-crm.workers.dev
+name = "triada-tg"
+main = "worker.js"
+compatibility_date = "2026-11-01"
+workers_dev = true

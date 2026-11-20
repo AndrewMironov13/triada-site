@@ -4,3 +4,4 @@ dist
 .env.local
 shots
 .vite
+lead-function/.chat-id

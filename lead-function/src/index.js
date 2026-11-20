@@ -5,6 +5,8 @@
 //   TG_TOKEN         — ключ бота от @BotFather
 //   TG_CHAT_ID       — id группы (минус в начале); несколько групп — через «;»
 //   ALLOWED_ORIGINS  — сайты, с которых принимаем заявки, через «;» (https://andrewmironov13.github.io;https://домен)
+//   TG_API           — куда слать запросы Bot API. Из Yandex Cloud api.telegram.org не открывается (РФ режет Telegram),
+//                      поэтому идём через посредника на Cloudflare (tg-relay/), без него — напрямую
 //
 // Сайт шлёт POST с Content-Type: text/plain, а тело — JSON. Это «простой» запрос, браузер не делает
 // предварительный OPTIONS, поэтому про CORS-preflight Yandex Cloud можно не думать. OPTIONS всё равно отвечаем
@@ -56,7 +58,8 @@ function message(lead) {
 }
 
 async function sendTelegram(token, chatId, text) {
-  const r = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+  const api = (process.env.TG_API || 'https://api.telegram.org').replace(/\/$/, '')
+  const r = await fetch(`${api}/bot${token}/sendMessage`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ chat_id: chatId, text, parse_mode: 'HTML', link_preview_options: { is_disabled: true } }),
@@ -109,7 +112,11 @@ module.exports.handler = async function handler(event) {
   const text = message(lead)
   const sent = await Promise.allSettled(chats.map((c) => sendTelegram(token, c, text)))
   const delivered = sent.filter((s) => s.status === 'fulfilled').length
-  if (!delivered) { console.error('не доставлено', sent.map((s) => s.reason?.message)); return reply(502, okOrigin, { ok: false, error: 'telegram' }) }
+  if (!delivered) {
+    // причина без ключа бота: код ответа Telegram или сетевая ошибка (логи функции выключены, поэтому отдаём её в ответе)
+    const why = sent.map((s) => { const e = s.reason || {}; return [e.message, e.cause?.code, e.cause?.message].filter(Boolean).join(' / ').replace(/bot[^/\s]+/g, 'bot<ключ>').slice(0, 200) })
+    return reply(502, okOrigin, { ok: false, error: 'telegram', why })
+  }
   return reply(200, okOrigin, { ok: true })
 }
 
