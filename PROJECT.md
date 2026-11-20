@@ -39,7 +39,13 @@
 - `sh lead-function/deploy.sh` — выкладка (нужны `yc init`, TRIADA_TG_TOKEN и TRIADA_TG_CHAT_ID в ~/.zshrc), адрес → `lead-function/URL`
 - после неё `sh scripts/deploy-demo.sh` — демо шлёт заявки в группу. Свой домен — в TRIADA_ORIGINS
 - Цена: бесплатно до 1 млн вызовов и 10 ГБ×ч в месяц (обновляется каждый месяц), дальше 18,97 ₽ за млн вызовов и 6,48 ₽ за ГБ×ч
-- MAX потом: вторая отправка рядом с `sendTelegram`
+- Выложено 20.11.2026 в Yandex Cloud Андрея (облако cloud-nimbus-870, каталог default, функция `triada-lead`, nodejs22, 128 МБ, логи выключены)
+- Из Yandex Cloud api.telegram.org не открывается (РФ режет Telegram) — функция шлёт через посредника `tg-relay/` на Cloudflare
+  (https://triada-tg.mirweb-crm.workers.dev, аккаунт Андрея, где CRM; пропускает только sendMessage бота @triada_leads_bot, ключ не хранит).
+  Выкладка посредника: `cd tg-relay && ~/crm/node_modules/.bin/wrangler deploy`. Лимит D1 не трогает, делит с CRM 100 000 запросов в сутки
+- Группа «Заявки ТРИАДА», id в `lead-function/.chat-id` (не в git). Деплой функции: `zsh -c 'source ~/.zshrc; sh lead-function/deploy.sh'`
+- К запуску: перенести функцию в облако Константина (он добавляет Андрея по Яндекс ID), добавить домен в TRIADA_ORIGINS
+- MAX потом: вторая отправка рядом с `sendTelegram`, из Yandex Cloud MAX открывается напрямую
 
 ## Не решено
 
