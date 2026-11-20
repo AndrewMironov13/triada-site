@@ -6,7 +6,7 @@ globalThis.fetch = async (url, opt) => { sent.push({ url: url.replace(/bot[^/]+/
 process.env.TG_TOKEN = 'test'; process.env.TG_CHAT_ID = '-1001;-1002'; process.env.ALLOWED_ORIGINS = 'https://andrewmironov13.github.io;http://127.0.0.1:5292'
 const { handler, _test } = require('./src/index.js')
 const ev = (body, origin = 'https://andrewmironov13.github.io', method = 'POST', ip = '1.1.1.1') => ({ httpMethod: method, headers: { Origin: origin, 'Content-Type': 'text/plain' }, body: typeof body === 'string' ? body : JSON.stringify(body), isBase64Encoded: false, requestContext: { identity: { sourceIp: ip } } })
-const lead = { services: ['тонировка', 'сигнализация', 'электропривод багажника'], kit: 'базовый минимум для иномарки', car: 'Toyota Camry <script>', year: '2021 и новее', phone: '8 (900) 123-45-67', name: 'Иван', page: 'https://x/', tab: 'start', company: '' }
+const lead = { services: ['тонировка', 'сигнализация', 'электропривод багажника'], kit: 'базовый минимум для иномарки', car: 'Toyota Camry <script>', year: 'новее 2020', phone: '8 (900) 123-45-67', name: 'Иван', page: 'https://x/', tab: 'start', company: '' }
 const cases = [
   ['обычная заявка', ev(lead), 200, 2],
   ['ловушка заполнена', ev({ ...lead, company: 'spam' }), 200, 0],
