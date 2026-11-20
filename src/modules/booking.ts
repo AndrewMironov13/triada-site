@@ -1,12 +1,26 @@
 // Окно записи: что ставим (отмечено заранее по вкладке или строке услуги), машина, год, телефон, имя.
 // Заявка уходит POST-запросом на VITE_LEAD_URL — это бот, который пересылает её в MAX и Telegram.
 // Пока адреса нет: на localhost окно показывает «Заявка у нас» (для проверки), на сайте честно просит позвонить
-import { SERVICES, SITE, LEVELS } from '../site.config'
+import { SERVICES, SITE, LEVELS, TABS } from '../site.config'
 import { currentTab, currentLevel } from './hero'
 import { calcState } from './calc'
 import { goal, reduceMotion, mqMobile } from './env'
 
 const LEAD_URL = import.meta.env.VITE_LEAD_URL as string | undefined
+
+// где человек нажал «Записаться» — строкой для менеджера в заявке
+function sourceOf(b: HTMLElement): string {
+  if (b.dataset.from === 'calc') return 'из подбора сигнализации'
+  if (b.closest('#minimum')) return 'из блока «Базовый минимум»'
+  const row = b.closest('.svc')
+  if (row) return `из прайса, строка «${row.querySelector('.svc__name')?.textContent?.trim() ?? ''}»`
+  if (b.closest('.hero')) return `с первого экрана, вкладка «${TABS[currentTab()].label}»`
+  if (b.closest('.nav')) return 'из шапки сайта'
+  if (b.closest('#menu')) return 'из меню'
+  if (b.closest('[data-dock]')) return 'из нижней панели'
+  if (b.closest('#contacts')) return 'из блока «Приезжайте»'
+  return 'с сайта'
+}
 const local = /^(localhost|127\.)/.test(location.hostname)
 // демо на GitHub Pages (VITE_DEMO=1): окно показывает «Заявка у нас» и честно пишет, что бот ещё не подключён
 const DEMO = import.meta.env.VITE_DEMO === '1'
@@ -31,8 +45,10 @@ export function initBooking() {
   chipEls.forEach((c) => c.addEventListener('click', () => { const k = c.dataset.k!; picked.has(k) ? picked.delete(k) : picked.add(k); sync() }))
 
   let opener: HTMLElement | null = null
+  let source = 'с сайта'
   function open(from: HTMLElement) {
     opener = from
+    source = sourceOf(from)
     dlg!.classList.remove('done'); ok.hidden = true; err.hidden = true
     picked.clear(); kit = ''
     // data-svc — одна услуга или несколько через запятую («Базовый минимум»), data-kit — строка «В заявке»
@@ -80,7 +96,7 @@ export function initBooking() {
     const lead = {
       services: SERVICES.filter((s) => picked.has(s.key)).map((s) => s.msg),
       kit, car: el('car').value.trim(), year, phone, name: el('name').value.trim(),
-      page: location.href, tab: currentTab(),
+      page: location.href, tab: currentTab(), from: source,
       company: el('company').value, // поле-ловушка для ботов, человек его не видит
     }
     send.disabled = true

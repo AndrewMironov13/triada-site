@@ -12,7 +12,7 @@
 // предварительный OPTIONS, поэтому про CORS-preflight Yandex Cloud можно не думать. OPTIONS всё равно отвечаем
 'use strict'
 
-const LIMIT = { services: 400, kit: 200, car: 80, year: 20, phone: 32, name: 60, page: 300, tab: 20 }
+const LIMIT = { services: 400, kit: 200, car: 80, year: 20, phone: 32, name: 60, page: 300, tab: 20, from: 80 }
 const TABS = { start: 'Автозапуск', signal: 'Сигнализации', audio: 'Автозвук', light: 'Подсветка', radio: 'Магнитолы', noise: 'Шумоизоляция' }
 const split = (v) => String(v || '').split(/[;\s]+/).map((x) => x.trim()).filter(Boolean)
 
@@ -53,7 +53,9 @@ function message(lead) {
   if (car) rows.push(`Машина: ${esc(car)}`)
   rows.push(`Телефон: ${esc(phoneOf(lead.phone))}`)
   if (cut(lead.name, LIMIT.name)) rows.push(`Имя: ${esc(cut(lead.name, LIMIT.name))}`)
-  rows.push('', `<i>${saratovTime()} по Саратову${tab ? ` · открыта вкладка «${tab}»` : ''}</i>`)
+  // откуда заявка: где нажали кнопку (сайт присылает from); у старых версий сайта — вкладка первого экрана
+  const from = cut(lead.from, LIMIT.from) || (tab ? `открыта вкладка «${tab}»` : '')
+  rows.push('', `<i>${saratovTime()} по Саратову${from ? ` · ${esc(from)}` : ''}</i>`)
   return rows.join('\n')
 }
 
