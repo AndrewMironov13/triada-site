@@ -159,18 +159,17 @@ export const KIT = {
   'both+gps': { m: 'StarLine E97', e: 'GSM GPS', p: 40000, what: 'брелок и приложение, автозапуск, GPS' },
 } as const
 
-// работы: фото из их Telegram (превью 800 px), номера размыты. Подписи — по их постам
+// работы: фото из постов их ВКонтакте (vk.ru/triada_uc, ноябрь 2026) — вырезаны из их постеров-шаблонов, номера размыты.
+// 20.11 Константин: прежние фото из Telegram «портят весь сайт», брать с ВК. Подписи — по постерам
 export const WORKS = [
-  { file: 'porsche-macan.jpg', car: 'Porsche Macan', what: 'Призрак 840, метки и «Свободные руки»' },
-  { file: 'volvo-xc90.jpg', car: 'Volvo XC90', what: 'StarLine S66 v2 и автозапуск по CAN' },
-  { file: 'bmw-x6.jpg', car: 'BMW X6', what: 'Android-мультимедиа и камера заднего вида' },
-  { file: 'mercedes-gle.jpg', car: 'Mercedes-Benz GLE', what: 'Два регистратора, провода спрятаны штатно' },
-  { file: 'haval-jolion.jpg', car: 'Haval Jolion', what: 'Helion: процессор, сабвуфер и шумка дверей' },
-  { file: 'vw-touareg.jpg', car: 'Volkswagen Touareg', what: 'StarLine S96 v2, регистратор и магнитола' },
-  { file: 'lexus-rx.jpg', car: 'Lexus RX', what: 'Android-магнитола в штатное место' },
-  { file: 'mitsubishi-outlander.jpg', car: 'Mitsubishi Outlander', what: 'Аудиосистема на SKYLOR Status и Evolution' },
-  { file: 'mazda-6.jpg', car: 'Mazda 6', what: 'StarLine S66 v2 и автозапуск' },
-  { file: 'mazda-cx5.jpg', car: 'Mazda CX-5', what: 'StarLine S66, модуль запуска и датчик температуры' },
+  { file: 'vk-haval-jolion.jpg', car: 'Haval Jolion', what: 'Электропривод багажника' },
+  { file: 'vk-lada-granta.jpg', car: 'Lada Granta FL', what: 'StarLine AS90 Eco и кнопка Start/Stop' },
+  { file: 'vk-vw-polo.jpg', car: 'Volkswagen Polo', what: 'StarLine S96 v2 Eco, магнитола Teyes и сабвуфер' },
+  { file: 'vk-kia-ceed.jpg', car: 'Kia Ceed', what: 'Амбиентная подсветка салона' },
+  { file: 'vk-kia-optima.jpg', car: 'Kia Optima', what: 'Контурная подсветка салона' },
+  { file: 'vk-bmw-3.jpg', car: 'BMW 3 Series', what: 'StarLine S66 v2 Eco и обход иммобилайзера без ключа' },
+  { file: 'vk-vw-touareg.jpg', car: 'Volkswagen Touareg', what: 'StarLine A93 v3 с автозапуском' },
+  { file: 'vk-bmw-x5.jpg', car: 'BMW X5', what: 'StarLine S66 v2 Eco и обход иммобилайзера без ключа' },
 ]
 
 // как работаем
