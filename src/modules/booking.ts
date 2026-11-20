@@ -81,11 +81,14 @@ export function initBooking() {
       services: SERVICES.filter((s) => picked.has(s.key)).map((s) => s.msg),
       kit, car: el('car').value.trim(), year, phone, name: el('name').value.trim(),
       page: location.href, tab: currentTab(),
+      company: el('company').value, // поле-ловушка для ботов, человек его не видит
     }
     send.disabled = true
     try {
       if (LEAD_URL) {
-        const r = await fetch(LEAD_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(lead) })
+        // text/plain — «простой» запрос: браузер не шлёт предварительный OPTIONS, функция в Yandex Cloud получает сразу POST
+        const r = await fetch(LEAD_URL, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=UTF-8' }, body: JSON.stringify(lead) })
+        if (r.status === 422) { err.textContent = 'Проверьте телефон: нужен номер из 10–11 цифр'; err.hidden = false; el('phone').focus(); return }
         if (!r.ok) throw new Error(String(r.status))
       } else if (!local && !DEMO) {
         throw new Error('no-endpoint')

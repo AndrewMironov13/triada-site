@@ -3,7 +3,9 @@
 # Запуск из корня проекта: sh scripts/deploy-demo.sh
 set -e
 cd "$(dirname "$0")/.."
-VITE_BASE=/triada-site/ VITE_SITE_URL=https://andrewmironov13.github.io/triada-site/ VITE_NOINDEX=1 VITE_DEMO=1 npm run build
+# адрес функции приёма заявок (lead-function/URL появляется после lead-function/deploy.sh); без него форма в демо-режиме
+LEAD=$(cat lead-function/URL 2>/dev/null || true)
+VITE_LEAD_URL="$LEAD" VITE_BASE=/triada-site/ VITE_SITE_URL=https://andrewmironov13.github.io/triada-site/ VITE_NOINDEX=1 VITE_DEMO=1 npm run build
 TMP=$(mktemp -d)
 cp -R dist/. "$TMP"/
 touch "$TMP/.nojekyll"

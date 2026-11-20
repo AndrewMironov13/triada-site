@@ -35,6 +35,7 @@ section[id]{scroll-margin-top:7rem}
 .js .rv{opacity:0;transform:translateY(2.4rem)}
 .js .rv.in{opacity:1;transform:none;transition:opacity .8s var(--ease) var(--d,0s),transform .9s var(--ease) var(--d,0s)}
 
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none}
 .book__demo{margin-top:-.4rem;padding:1rem 1.4rem;border-radius:1.2rem;border:1px dashed var(--line2);font-size:1.4rem;color:var(--mute2)}
 
 /* «Базовый минимум»: акцентный блок сразу после первого экрана */
