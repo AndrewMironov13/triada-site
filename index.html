@@ -19,8 +19,7 @@
 <link rel="icon" href="%BASE%favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="%BASE%apple-touch-icon.png">
 <meta name="theme-color" content="#030304">
-<link rel="preload" as="image" href="%M%hero/start-d-bg.jpg" media="(min-width: 761px)">
-<link rel="preload" as="image" href="%M%hero/start-m-bg.jpg" media="(max-width: 760px)">
+<link rel="preload" as="image" href="%START_CAR%">
 <script>if(matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('rm')</script>
 <script type="application/ld+json">%JSON_LD%</script>
 </head>
@@ -58,11 +57,15 @@
 <main>
 <section class="hero intro" id="top" data-tab="start">
   <h1 class="sr">%SEO_H1%</h1>
-  <div class="scene">
-    <picture><source media="(max-width:760px)" srcset="%M%hero/start-m-bg.jpg"><img class="scene__bg" src="%M%hero/start-d-bg.jpg" alt="" fetchpriority="high"></picture>
+  <div class="scene" data-image-tab="start">
+    <picture><source media="(max-width:760px)" srcset="%START_CAR%"><img class="scene__bg" src="%START_CAR%" alt=""></picture>
     <div class="scene__shade"></div>
     <p class="word" id="heroWord" aria-hidden="true"><span>Автозапуск</span></p>
-    <div class="scene__car"><picture><source media="(max-width:760px)" srcset="%M%hero/start-m-car.webp"><img src="%M%hero/start-d-car.webp" alt="BYD Sealion 7 анфас, ходовые огни горят"></picture></div>
+    <div class="scene__car">
+      <div class="scene__car-frame">
+        <picture><source media="(max-width:760px)" srcset="%START_CAR%"><img src="%START_CAR%" alt="%START_ALT%" width="1536" height="1024" fetchpriority="high"></picture>
+      </div>
+    </div>
     <i class="spot" id="spot" aria-hidden="true"></i>
     <svg class="lead" aria-hidden="true"><line id="leadLine"/></svg>
     <div class="tag" id="tag" aria-hidden="true"><p class="tag__h"><span class="tag__i" id="tagI"></span><span id="tagA">StarLine</span><time id="tagT">7:40</time></p><b id="tagB">Двигатель запущен</b><small id="tagS">Прогрев 10 минут, в салоне +20°</small></div>
@@ -132,9 +135,15 @@
 <section class="sec works" id="works" aria-labelledby="works-h">
   <div class="sec__head rv"><p class="eyebrow">Из нашего бокса</p><h2 class="big" id="works-h">Работы</h2><p class="sec__lead">Работаем по предварительной записи, без выходных. Свежие работы каждый день выкладываем в Telegram и ВКонтакте</p>
     <p class="sec__links"><a class="btn btn--o btn--sm" href="%TG_URL%" target="_blank" rel="noopener" data-goal="tg_channel"><svg><use href="#i-tg"/></svg>Telegram</a><a class="btn btn--o btn--sm" href="%VK_URL%" target="_blank" rel="noopener" data-goal="vk">ВКонтакте</a></p></div>
-  <div class="works__row" tabindex="0" aria-label="Наши работы, листается вбок">
+  <div class="works__grid">
         %WORKS%
   </div>
+  <dialog class="work-dialog" id="workDialog" aria-labelledby="workTitle">
+    <div class="work-dialog__panel">
+      <form method="dialog"><button class="work-dialog__close" type="submit" aria-label="Закрыть фотографии" autofocus><svg aria-hidden="true"><use href="#i-x"/></svg></button></form>
+      <div id="workDetails"></div>
+    </div>
+  </dialog>
 </section>
 
 <section class="sec how" id="how" aria-labelledby="how-h">

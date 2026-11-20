@@ -6,6 +6,7 @@ import { initHero } from './modules/hero'
 import { initNav } from './modules/nav'
 import { initCalc } from './modules/calc'
 import { initBooking } from './modules/booking'
+import { initWorks } from './modules/works'
 import { inView } from 'motion'
 import { goal, still } from './modules/env'
 
@@ -19,6 +20,7 @@ initHero()
 initNav()
 initCalc()
 initBooking()
+initWorks()
 
 // блоки появляются при прокрутке; на снимках (?static) и при «меньше движения» — сразу
 const rv = document.querySelectorAll<HTMLElement>('.rv')

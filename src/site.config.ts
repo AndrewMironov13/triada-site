@@ -44,6 +44,7 @@ export const SEO = {
 }
 
 export type Tab = 'start' | 'signal' | 'audio' | 'light' | 'radio' | 'noise'
+export const START_CAR = 'hero/monjaro-studio.webp'
 type Pt = { spot: [number, number]; tag: [number, number] }
 export type TabData = {
   label: string; word: string; line: string; sub: string; price: string; cta: string
@@ -59,8 +60,8 @@ export const TABS: Record<Tab, TabData> = {
     sub: 'Заводите машину с телефона или брелока. Устанавливаем StarLine, Pandora и Призрак за день',
     price: 'Автозапуск с установкой <b>от 18 000 ₽</b>', cta: 'Подобрать автозапуск',
     app: 'StarLine', time: '7:40', tagB: 'Двигатель запущен', tagS: 'Прогрев 10 минут, в салоне +20°', icon: 'power',
-    alt: 'BYD Sealion 7 анфас, ходовые огни горят',
-    d: { spot: [1232, 518], tag: [1146, 610] }, m: { spot: [305, 280], tag: [150, 330] },
+    alt: 'Geely Monjaro анфас в тёмной студии с табличкой «ТРИАДА»',
+    d: { spot: [1251, 526], tag: [1146, 610] }, m: { spot: [303, 263], tag: [150, 342] },
   },
   signal: {
     label: 'Сигнализации', word: 'Сигнализации', line: 'Пусть угонщик ищет попроще',
@@ -162,14 +163,64 @@ export const KIT = {
 // работы: фото из постов их ВКонтакте (vk.ru/triada_uc, ноябрь 2026) — вырезаны из их постеров-шаблонов, номера размыты.
 // 20.11 Константин: прежние фото из Telegram «портят весь сайт», брать с ВК. Подписи — по постерам
 export const WORKS = [
-  { file: 'vk-haval-jolion.jpg', car: 'Haval Jolion', what: 'Электропривод багажника' },
-  { file: 'vk-lada-granta.jpg', car: 'Lada Granta FL', what: 'StarLine AS90 Eco и кнопка Start/Stop' },
-  { file: 'vk-vw-polo.jpg', car: 'Volkswagen Polo', what: 'StarLine S96 v2 Eco, магнитола Teyes и сабвуфер' },
-  { file: 'vk-kia-ceed.jpg', car: 'Kia Ceed', what: 'Амбиентная подсветка салона' },
-  { file: 'vk-kia-optima.jpg', car: 'Kia Optima', what: 'Контурная подсветка салона' },
-  { file: 'vk-bmw-3.jpg', car: 'BMW 3 Series', what: 'StarLine S66 v2 Eco и обход иммобилайзера без ключа' },
-  { file: 'vk-vw-touareg.jpg', car: 'Volkswagen Touareg', what: 'StarLine A93 v3 с автозапуском' },
-  { file: 'vk-bmw-x5.jpg', car: 'BMW X5', what: 'StarLine S66 v2 Eco и обход иммобилайзера без ключа' },
+  {
+    cover: 'haval-trunk', car: 'Haval Jolion', what: 'Электропривод багажника',
+    photos: [
+      { file: 'haval-trunk', caption: 'Багажник с установленным электроприводом' },
+      { file: 'haval-strut', caption: 'Электрическая стойка крышки' },
+      { file: 'haval-switch', caption: 'Кнопка управления багажником' },
+    ],
+  },
+  {
+    cover: 'vk-lada-granta', car: 'Lada Granta FL', what: 'StarLine AS90 Eco и кнопка Start/Stop',
+    photos: [
+      { file: 'granta-cabin', caption: 'Салон и комплект StarLine AS90 Eco' },
+      { file: 'granta-module', caption: 'Подключение охранного блока' },
+      { file: 'granta-button', caption: 'Кнопка Start/Stop после установки' },
+    ],
+  },
+  {
+    cover: 'polo-dash', car: 'Volkswagen Polo', what: 'StarLine S96 v2 Eco, магнитола Teyes и сабвуфер',
+    photos: [
+      { file: 'polo-dash', caption: 'Магнитола Teyes CC4L в центральной панели' },
+      { file: 'polo-subwoofer', caption: 'Сабвуфер в багажнике' },
+    ],
+  },
+  {
+    cover: 'ceed-interior', car: 'Kia Ceed', what: 'Амбиентная подсветка салона',
+    photos: [
+      { file: 'ceed-interior', caption: 'Подсветка передней части салона' },
+      { file: 'ceed-door', caption: 'Световая линия на дверной обшивке' },
+    ],
+  },
+  {
+    cover: 'optima-interior', car: 'Kia Optima', what: 'Контурная подсветка салона',
+    photos: [
+      { file: 'optima-interior', caption: 'Контурная подсветка панели и дверей' },
+      { file: 'optima-door', caption: 'Световая линия на двери крупным планом' },
+    ],
+  },
+  {
+    cover: 'vk-bmw-3', car: 'BMW 3 Series', what: 'StarLine S66 v2 Eco и обход иммобилайзера без ключа',
+    photos: [
+      { file: 'bmw3-cabin', caption: 'Салон и комплект StarLine S66 v2 Eco' },
+      { file: 'bmw3-setup', caption: 'Настройка комплекса с ноутбука' },
+    ],
+  },
+  {
+    cover: 'vk-vw-touareg', car: 'Volkswagen Touareg', what: 'StarLine A93 v3 с автозапуском',
+    photos: [
+      { file: 'touareg-cabin', caption: 'Салон и комплект StarLine A93 v3' },
+      { file: 'touareg-module', caption: 'Доступ к проводке и блоку при монтаже' },
+    ],
+  },
+  {
+    cover: 'vk-bmw-x5', car: 'BMW X5', what: 'StarLine S66 v2 Eco и обход иммобилайзера без ключа',
+    photos: [
+      { file: 'x5-cabin', caption: 'Салон и комплект StarLine S66 v2 Eco' },
+      { file: 'x5-wiring', caption: 'Подключение к штатной проводке' },
+    ],
+  },
 ]
 
 // как работаем

@@ -70,13 +70,32 @@ section[id]{scroll-margin-top:7rem}
 .certs__names i{width:1.2rem;height:1.2rem;border-radius:50%;background:var(--red);flex:none}
 .certs__note{font-size:1.8rem;color:var(--mute2);max-width:60rem}
 
-/* работы: лента вбок */
-.works__row,.revs__row{display:grid;grid-auto-flow:column;grid-auto-columns:38rem;gap:1.6rem;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:4.8rem;margin:0 -4.8rem;padding:0 4.8rem 2rem;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.2) transparent;outline:none}
-.work{scroll-snap-align:start;border-radius:2rem;overflow:hidden;background:var(--ink2);border:1px solid var(--line)}
-.work img{width:100%;height:auto;aspect-ratio:16/10;object-fit:cover}
-.work figcaption{display:grid;gap:.3rem;padding:1.6rem 1.8rem 2rem}
-.work b{font-weight:600;font-size:1.7rem}
-.work span{font-size:1.4rem;color:var(--mute2)}
+/* работы */
+.works__grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.6rem}
+.work{position:relative;display:flex;flex-direction:column;text-align:left;border-radius:1.6rem;overflow:hidden;background:var(--ink2);border:1px solid var(--line)}
+.work:hover,.work:focus-visible{border-color:var(--line2)}
+.work img{width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;background:#151518}
+.work__caption{display:grid;gap:.4rem;padding:1.5rem 1.6rem 1.8rem}
+.work__caption b{font-weight:600;font-size:1.7rem;line-height:1.2}
+.work__caption span{font-size:1.4rem;color:var(--mute2)}
+.work__arrow{position:absolute;right:1rem;top:1rem;width:3.2rem;height:3.2rem;padding:.75rem;border:1px solid var(--line2);border-radius:50%;background:rgba(3,3,4,.8)}
+.work:hover .work__arrow,.work:focus-visible .work__arrow{background:var(--red);border-color:var(--red)}
+
+html:has(.work-dialog[open]){overflow:hidden}
+.work-dialog{width:min(95rem,calc(100% - 3.2rem));max-height:calc(100dvh - 3.2rem);margin:auto;overflow:auto;overscroll-behavior:contain;border:1px solid var(--line2);border-radius:1.6rem;background:var(--ink2);color:#fff}
+.work-dialog::backdrop{background:rgba(3,3,4,.8)}
+.work-dialog__panel{padding:2.4rem}
+.work-dialog__panel form{position:sticky;top:1rem;z-index:1;float:right;margin-left:1rem}
+.work-dialog__close{display:grid;place-items:center;width:4.4rem;height:4.4rem;border:1px solid var(--line2);border-radius:50%;background:var(--ink2)}
+.work-dialog__close svg{width:2rem;height:2rem}
+.work-dialog h3{font-size:2.8rem;line-height:1.1}
+.work-dialog__summary{margin:.6rem 0 1.8rem;color:var(--mute2);font-size:1.5rem}
+.work-dialog__photos{clear:both;display:flex;gap:1.2rem}
+.work-dialog__photos figure{flex:1;min-width:0}
+.work-dialog__photos img{width:100%;aspect-ratio:16/10;object-fit:contain;background:#151518;border-radius:.8rem}
+.work-dialog__photos figcaption{padding:.7rem 0;font-size:1.4rem;color:var(--mute2)}
+
+.revs__row{display:grid;grid-auto-flow:column;grid-auto-columns:38rem;gap:1.6rem;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:4.8rem;margin:0 -4.8rem;padding:0 4.8rem 2rem;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.2) transparent;outline:none}
 
 /* как работаем */
 .steps{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:1.6rem}
@@ -178,6 +197,8 @@ section[id]{scroll-margin-top:7rem}
 @media (max-width:1100px) and (min-width:761px){
   .svc{grid-template-columns:4rem 26rem 1fr 14rem 5.2rem}
   .svc__name{font-size:4.6rem}
+  .work__caption b{font-size:max(1.7rem,14px)}
+  .work__caption span{font-size:max(1.4rem,12px)}
 }
 @media (max-width:760px){
   .min__punch{font-size:2.6rem}
@@ -207,7 +228,15 @@ section[id]{scroll-margin-top:7rem}
   .certs__names{flex-direction:column;font-size:3.4rem;gap:1rem}
   .certs__names i{display:none}
   .certs__note{font-size:1.5rem}
-  .works__row,.revs__row{margin:0 -1.6rem;padding:0 1.6rem 1.6rem;scroll-padding-inline:1.6rem;grid-auto-columns:80%}
+  .works__grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+  .work__caption{padding:1rem 1rem 1.2rem}
+  .work__caption b{font-size:1.5rem}
+  .work__caption span{font-size:1.3rem}
+  .work__arrow{right:.6rem;top:.6rem;width:2.8rem;height:2.8rem;padding:.65rem}
+  .work-dialog__panel{padding:1.6rem}
+  .work-dialog h3{font-size:2.4rem}
+  .work-dialog__photos{flex-direction:column}
+  .revs__row{margin:0 -1.6rem;padding:0 1.6rem 1.6rem;scroll-padding-inline:1.6rem;grid-auto-columns:80%}
   .steps{grid-template-columns:1fr 1fr;gap:2.4rem 1.2rem}
   .step__n{font-size:6rem}
   .step h3{font-size:1.9rem}

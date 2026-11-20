@@ -1,6 +1,6 @@
 // Первый экран «Студия»: вкладка меняет слово за машиной, кадр, строку, цену и плашку-уведомление.
 // Ручки для снимков: ?static (без анимаций), ?tab=start|signal|audio|light|radio|noise, ?lvl=1|2|3
-import { TABS, TAB_ORDER, LEVELS, firstTab, type Tab } from '../site.config'
+import { TABS, TAB_ORDER, LEVELS, START_CAR, firstTab, type Tab } from '../site.config'
 import { media, reduceMotion, mqMobile, goal, still, q } from './env'
 
 export const ICONS: Record<string, string> = {
@@ -23,7 +23,11 @@ let cur: Tab = 'start'
 export const currentTab = () => cur
 export let currentLevel = 2
 
-const img = (k: Tab) => ({
+// Один кадр Monjaro под словом и поверх него там, где крышу перекрывают буквы.
+const img = (k: Tab) => k === 'start' ? {
+  dbg: media(START_CAR), dcar: media(START_CAR),
+  mbg: media(START_CAR), mcar: media(START_CAR),
+} : ({
   dbg: media(`hero/${k}-d-bg.jpg`), dcar: media(`hero/${k}-d-car.webp`),
   mbg: media(`hero/${k}-m-bg.jpg`), mcar: media(`hero/${k}-m-car.webp`),
 })
@@ -65,6 +69,9 @@ export function initHero() {
     const im = img(k)
     const pb = $('.scene > picture'), pc = $('.scene__car picture')
     const swap = () => {
+      // Геометрию кадра переключаем вместе с файлом под завершившимся fade-out.
+      // Иначе Monjaro успевает на 220 мс растянуться в формат следующего слайда.
+      $('.scene')!.dataset.imageTab = k
       if (pb) { $('source', pb)!.setAttribute('srcset', im.mbg); $<HTMLImageElement>('img', pb)!.src = im.dbg }
       if (pc) { $('source', pc)!.setAttribute('srcset', im.mcar); const ci = $<HTMLImageElement>('img', pc)!; ci.src = im.dcar; ci.alt = TABS[k].alt }
     }

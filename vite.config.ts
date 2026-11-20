@@ -1,7 +1,7 @@
 import { defineConfig, loadEnv, type Plugin } from 'vite'
 import { writeFileSync } from 'node:fs'
 import { resolve } from 'node:path'
-import { SITE, SEO, TABS, TAB_ORDER, SERVICES, MINIMUM, WORKS, STEPS, REVIEWS, FAQ, LEVELS } from './src/site.config'
+import { SITE, SEO, TABS, TAB_ORDER, SERVICES, MINIMUM, WORKS, STEPS, REVIEWS, FAQ, LEVELS, START_CAR } from './src/site.config'
 
 // Переменные сборки:
 //   VITE_SITE_URL — адрес сайта со слэшем на конце (canonical, og, sitemap)
@@ -55,7 +55,19 @@ export default defineConfig(({ mode, command }) => {
           <ul class="mcard__list">${c.items.map(([n, p]) => `<li><b>${n}</b><em>${p}</em></li>`).join('')}</ul>
           <button class="btn btn--r mcard__go" type="button" data-book data-svc="${c.svc}" data-kit="${esc(c.kit)}" data-goal="minimum_${c.key}">Записаться на комплекс <span class="arr"><svg><use href="#i-arr"/></svg></span></button>
         </article>`).join('\n        ')
-  const works = WORKS.map((w) => `<figure class="work"><img src="${m('works/' + w.file)}" alt="${esc(w.car + ': ' + w.what)}" loading="lazy" decoding="async" width="800" height="500"><figcaption><b>${w.car}</b><span>${w.what}</span></figcaption></figure>`).join('\n        ')
+  const works = WORKS.map((work, index) => `<button class="work" type="button" data-work="work-${index}" aria-haspopup="dialog" aria-controls="workDialog">
+          <img src="${m('works/' + work.cover + '.jpg')}" alt="" loading="lazy" decoding="async" width="800" height="500">
+          <span class="work__caption"><b>${esc(work.car)}</b><span>${esc(work.what)}</span></span>
+          <svg class="work__arrow" aria-hidden="true"><use href="#i-arr"/></svg>
+        </button>
+        <template id="work-${index}">
+          <h3 id="workTitle">${esc(work.car)}</h3>
+          <p class="work-dialog__summary">${esc(work.what)}</p>
+          <div class="work-dialog__photos">${work.photos.map((photo) => `<figure>
+            <img src="${m('works/' + photo.file + '.jpg')}" alt="" decoding="async">
+            <figcaption>${esc(photo.caption)}</figcaption>
+          </figure>`).join('')}</div>
+        </template>`).join('\n        ')
   const steps = STEPS.map((s, i) => `<li class="step rv" style="--d:${(i * 0.06).toFixed(2)}s"><span class="step__n">${String(i + 1).padStart(2, '0')}</span><h3>${s.t}</h3><p>${s.d}</p></li>`).join('\n        ')
   const reviews = REVIEWS.map((r) => `<figure class="rev"><blockquote>«${r.t}»</blockquote><figcaption><b>${r.a}</b><span>${r.d}, Яндекс Карты</span></figcaption></figure>`).join('\n        ')
   const faq = FAQ.map((f, i) => `<details class="qa rv" style="--d:${(i * 0.04).toFixed(2)}s"><summary><span>${f.q}</span><i aria-hidden="true"></i></summary><p>${f.a}</p></details>`).join('\n        ')
@@ -79,7 +91,7 @@ export default defineConfig(({ mode, command }) => {
         MAX_HIDDEN: SITE.max ? '' : ' hidden', LEGAL: SITE.legal, REVIEWS_URL: SITE.reviewsUrl,
         RATING: SITE.rating.value, RATING_NOTE: SITE.rating.note,
         TABS: tabs, LEVELS: levels, SERVICES: services, MINIMUM: minimum, WORKS: works, STEPS: steps, REVIEWS: reviews, FAQ: faq, CENTERS: centers,
-        M: `${base}media/`,
+        M: `${base}media/`, START_CAR: m(START_CAR), START_ALT: esc(TABS.start.alt),
       }
       let out = src.replace(/%([A-Z0-9_]+)%/g, (s, k) => (k in map ? map[k] : s))
       if (env.VITE_METRIKA && command === 'build') {
