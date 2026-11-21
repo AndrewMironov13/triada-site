@@ -45,7 +45,7 @@ export const SEO = {
 }
 
 export type Tab = 'start' | 'signal' | 'audio' | 'light' | 'radio' | 'noise'
-export const START_CAR = 'hero/monjaro-studio.webp'
+export const START_CAR = 'hero/mazda-studio.webp'
 type Pt = { spot: [number, number]; tag: [number, number] }
 export type TabData = {
   label: string; word: string; line: string; sub: string; price: string; cta: string
@@ -61,7 +61,7 @@ export const TABS: Record<Tab, TabData> = {
     sub: 'Заводите машину с телефона или брелока. Устанавливаем StarLine, Pandora и Призрак за день',
     price: 'Автозапуск с установкой <b>от 18 000 ₽</b>', cta: 'Подобрать автозапуск',
     app: 'StarLine', time: '7:40', tagB: 'Двигатель запущен', tagS: 'Прогрев 10 минут, в салоне +20°', icon: 'power',
-    alt: 'Geely Monjaro анфас в тёмной студии с табличкой «ТРИАДА»',
+    alt: 'Белая Mazda анфас в тёмной студии с табличкой «ТРИАДА»',
     d: { spot: [1251, 526], tag: [1146, 610] }, m: { spot: [303, 263], tag: [150, 342] },
   },
   signal: {

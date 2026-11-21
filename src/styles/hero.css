@@ -7,9 +7,9 @@
 /* One studio photo supplies the floor, shadows and vehicle. The copy above
    the title is clipped to the roof so the lettering can pass behind it. */
 .scene[data-image-tab=start] {
-  --photo-left: 38.5rem;
-  --photo-top: 17.5rem;
-  --photo-width: 120rem;
+  --photo-left: 33.5rem;
+  --photo-top: 6rem;
+  --photo-width: 130rem;
 }
 .scene[data-image-tab=start] .scene__bg,
 .scene[data-image-tab=start] .scene__car-frame {
@@ -27,9 +27,9 @@
   mask-composite: intersect;
 }
 .scene[data-image-tab=start] .scene__car-frame {
-  clip-path: polygon(32.7% 23%, 34.4% 16.6%, 35.9% 12.9%, 37% 12.8%, 38.2% 13.9%,
-    44% 13.3%, 51% 13.1%, 57% 13.3%, 62.2% 13.7%, 63% 12.9%, 64% 12.8%,
-    65% 13.4%, 66.4% 15.6%, 69% 23%);
+  clip-path: polygon(29.9% 40.7%, 33.1% 29.8%, 35.1% 26.4%, 36.6% 25.4%,
+    40% 24.7%, 46% 24.3%, 51% 24.2%, 57% 24.4%, 62.7% 25.2%,
+    64.8% 26.4%, 66.4% 29.5%, 70.1% 40.7%);
 }
 .scene[data-image-tab=start] .scene__car img { object-fit: contain; }
 .scene__shade{position:absolute;inset:0;z-index:1;background:
@@ -77,9 +77,9 @@
   .hero{height:auto;padding-bottom:3.6rem}
   .scene{position:relative;inset:auto;height:42rem;overflow:hidden}
   .scene[data-image-tab=start] {
-    --photo-left: -5.35rem;
-    --photo-top: 12rem;
-    --photo-width: 49.4rem;
+    --photo-left: -7rem;
+    --photo-top: 8rem;
+    --photo-width: 53rem;
   }
   .scene__shade{background:linear-gradient(0deg,rgba(3,3,4,1) 0,rgba(3,3,4,.6) 6%,rgba(3,3,4,0) 16%)}
   .word{bottom:23rem}
