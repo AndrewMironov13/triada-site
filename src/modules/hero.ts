@@ -57,8 +57,12 @@ export function initHero() {
     const sc = svg.getBoundingClientRect(), s = spot.getBoundingClientRect(), g = tag.getBoundingClientRect()
     const x1 = s.left + s.width / 2 - sc.left, y1 = s.top + s.height / 2 - sc.top
     const gx = g.left - sc.left, gy = g.top - sc.top, gw = g.width, gh = g.height
-    const x2 = x1 < gx ? gx : x1 > gx + gw ? gx + gw : x1
-    const y2 = x1 < gx || x1 > gx + gw ? gy + gh / 2 : y1 < gy ? gy : gy + gh
+    let x2 = x1 < gx ? gx : x1 > gx + gw ? gx + gw : x1
+    let y2 = x1 < gx || x1 > gx + gw ? gy + gh / 2 : y1 < gy ? gy : gy + gh
+    // От капота к плашке автозапуска проводим диагональ, даже когда точка над плашкой.
+    if (cur === 'start' && y1 < gy && x1 >= gx && x1 <= gx + gw) {
+      x2 = gx + gw * .85; y2 = gy
+    }
     const dx = x2 - x1, dy = y2 - y1, d = Math.hypot(dx, dy) || 1, r = s.width / 2 + 3
     L.setAttribute('x1', String(x1 + (dx / d) * r)); L.setAttribute('y1', String(y1 + (dy / d) * r))
     L.setAttribute('x2', String(x2)); L.setAttribute('y2', String(y2))
