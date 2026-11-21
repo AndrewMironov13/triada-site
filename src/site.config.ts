@@ -164,11 +164,11 @@ export const KIT = {
 // 20.11 Константин: прежние фото из Telegram «портят весь сайт», брать с ВК. Подписи — по постерам
 export const WORKS = [
   {
-    cover: 'haval-trunk', car: 'Haval Jolion', what: 'Электропривод багажника',
+    cover: 'kia-rio-x-line-cover', car: 'Kia Rio X-Line', what: 'Электропривод багажника',
     photos: [
-      { file: 'haval-trunk', caption: 'Багажник с установленным электроприводом' },
-      { file: 'haval-strut', caption: 'Электрическая стойка крышки' },
-      { file: 'haval-switch', caption: 'Кнопка управления багажником' },
+      { file: 'kia-rio-x-line-trunk', caption: 'Открытая крышка багажника' },
+      { file: 'kia-rio-x-line-strut', caption: 'Электропривод крышки' },
+      { file: 'kia-rio-x-line-switch', caption: 'Кнопка управления багажником' },
     ],
   },
   {
