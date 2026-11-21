@@ -56,7 +56,7 @@ export default defineConfig(({ mode, command }) => {
           <button class="btn btn--r mcard__go" type="button" data-book data-svc="${c.svc}" data-kit="${esc(c.kit)}" data-goal="minimum_${c.key}">Записаться на комплекс <span class="arr"><svg><use href="#i-arr"/></svg></span></button>
         </article>`).join('\n        ')
   const works = WORKS.map((work, index) => `<button class="work" type="button" data-work="work-${index}" aria-haspopup="dialog" aria-controls="workDialog">
-          <img src="${m('works/' + work.cover + '.jpg')}" alt="" loading="lazy" decoding="async" width="800" height="500">
+          <img${work.fit === 'contain' ? ' class="work__cover--contain"' : ''} src="${m('works/' + work.cover + '.jpg')}" alt="" loading="lazy" decoding="async" width="800" height="500">
           <span class="work__caption"><b>${esc(work.car)}</b><span>${esc(work.what)}</span></span>
           <svg class="work__arrow" aria-hidden="true"><use href="#i-arr"/></svg>
         </button>

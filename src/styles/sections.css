@@ -75,6 +75,7 @@ section[id]{scroll-margin-top:7rem}
 .work{position:relative;display:flex;flex-direction:column;text-align:left;border-radius:1.6rem;overflow:hidden;background:var(--ink2);border:1px solid var(--line)}
 .work:hover,.work:focus-visible{border-color:var(--line2)}
 .work img{width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;background:#151518}
+.work img.work__cover--contain{object-fit:contain;background:var(--ink2)}
 .work__caption{display:grid;gap:.4rem;padding:1.5rem 1.6rem 1.8rem}
 .work__caption b{font-weight:600;font-size:1.7rem;line-height:1.2}
 .work__caption span{font-size:1.4rem;color:var(--mute2)}

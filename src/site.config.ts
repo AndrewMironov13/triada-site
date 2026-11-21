@@ -164,7 +164,7 @@ export const KIT = {
 // 20.11 Константин: прежние фото из Telegram «портят весь сайт», брать с ВК. Подписи — по постерам
 export const WORKS = [
   {
-    cover: 'kia-rio-x-line-cover', car: 'Kia Rio X-Line', what: 'Электропривод багажника',
+    cover: 'kia-rio-x-line-trunk', fit: 'contain', car: 'Kia Rio X-Line', what: 'Электропривод багажника',
     photos: [
       { file: 'kia-rio-x-line-trunk', caption: 'Открытая крышка багажника' },
       { file: 'kia-rio-x-line-strut', caption: 'Электропривод крышки' },
@@ -172,18 +172,18 @@ export const WORKS = [
     ],
   },
   {
-    cover: 'vk-lada-granta', car: 'Lada Granta FL', what: 'StarLine AS90 Eco и кнопка Start/Stop',
+    cover: 'jetour-door-insulation', car: 'Jetour X70 Plus', what: 'Шумоизоляция дверей',
     photos: [
-      { file: 'granta-cabin', caption: 'Салон и комплект StarLine AS90 Eco' },
-      { file: 'granta-module', caption: 'Подключение охранного блока' },
-      { file: 'granta-button', caption: 'Кнопка Start/Stop после установки' },
+      { file: 'jetour-door-insulation', caption: 'Виброизоляция внутри двери' },
+      { file: 'jetour-door-layer', caption: 'Виброизоляция под дверной обшивкой' },
     ],
   },
   {
-    cover: 'polo-dash', car: 'Volkswagen Polo', what: 'StarLine S96 v2 Eco, магнитола Teyes и сабвуфер',
+    cover: 'polo-dashboard-wide', fit: 'contain', car: 'Volkswagen Polo', what: 'Магнитола Teyes, сабвуфер и StarLine',
     photos: [
-      { file: 'polo-dash', caption: 'Магнитола Teyes CC4L в центральной панели' },
+      { file: 'polo-dashboard-wide', caption: 'Магнитола Teyes CC4L в центральной панели' },
       { file: 'polo-subwoofer', caption: 'Сабвуфер в багажнике' },
+      { file: 'polo-starline-module', caption: 'Блок StarLine после подключения' },
     ],
   },
   {
@@ -194,31 +194,31 @@ export const WORKS = [
     ],
   },
   {
-    cover: 'optima-interior', car: 'Kia Optima', what: 'Контурная подсветка салона',
+    cover: 'haval-tinted-side', car: 'Haval Jolion', what: 'Тонировка задних стёкол',
     photos: [
-      { file: 'optima-interior', caption: 'Контурная подсветка панели и дверей' },
-      { file: 'optima-door', caption: 'Световая линия на двери крупным планом' },
+      { file: 'haval-tinted-side', caption: 'Задние боковые стёкла после тонировки' },
+      { file: 'haval-tinted-rear', caption: 'Задняя полусфера с плёнкой SunControl' },
     ],
   },
   {
-    cover: 'vk-bmw-3', car: 'BMW 3 Series', what: 'StarLine S66 v2 Eco и обход иммобилайзера без ключа',
+    cover: 'gac-front-recorder', car: 'GAC GS8', what: 'Видеорегистратор с задней камерой',
     photos: [
-      { file: 'bmw3-cabin', caption: 'Салон и комплект StarLine S66 v2 Eco' },
-      { file: 'bmw3-setup', caption: 'Настройка комплекса с ноутбука' },
+      { file: 'gac-front-recorder', caption: 'Регистратор в штатном месте у зеркала' },
+      { file: 'gac-rear-recorder', caption: 'Камера для записи заднего обзора' },
     ],
   },
   {
-    cover: 'vk-vw-touareg', car: 'Volkswagen Touareg', what: 'StarLine A93 v3 с автозапуском',
+    cover: 'geely-starline-setup', car: 'Geely Coolray', what: 'Сигнализация StarLine и GPS',
     photos: [
-      { file: 'touareg-cabin', caption: 'Салон и комплект StarLine A93 v3' },
-      { file: 'touareg-module', caption: 'Доступ к проводке и блоку при монтаже' },
+      { file: 'geely-starline-setup', caption: 'Настройка охранного комплекса в салоне' },
+      { file: 'geely-starline-kit', caption: 'Комплект StarLine S96 v2 перед установкой' },
     ],
   },
   {
-    cover: 'vk-bmw-x5', car: 'BMW X5', what: 'StarLine S66 v2 Eco и обход иммобилайзера без ключа',
+    cover: 'haval-spare-wheel-subwoofer', car: 'Haval Jolion', what: 'Сабвуфер в нише запасного колеса',
     photos: [
-      { file: 'x5-cabin', caption: 'Салон и комплект StarLine S66 v2 Eco' },
-      { file: 'x5-wiring', caption: 'Подключение к штатной проводке' },
+      { file: 'haval-spare-wheel-subwoofer', caption: 'Сабвуфер Helion HAM Bass 15 в нише запаски' },
+      { file: 'haval-audio-install', caption: 'Монтаж оборудования в салоне' },
     ],
   },
 ]
