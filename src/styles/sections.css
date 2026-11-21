@@ -29,7 +29,7 @@ section[id]{scroll-margin-top:7rem}
 .sec__head{display:grid;gap:1.4rem;margin-bottom:4.8rem;max-width:90rem}
 .big{font-family:var(--cond);font-weight:900;font-size:16rem;line-height:.84;text-transform:uppercase;letter-spacing:.004em;color:#e6e7ea;margin-top:.2rem}
 .sec__lead{font-size:1.8rem;color:var(--mute2);max-width:56rem}
-.sec__links{display:flex;gap:.8rem;margin-top:1rem}
+.sec__links{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1rem}
 
 /* появление при прокрутке (motion inView); без JS всё видно */
 .js .rv{opacity:0;transform:translateY(2.4rem)}

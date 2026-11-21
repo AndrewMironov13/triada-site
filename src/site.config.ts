@@ -31,6 +31,7 @@ export const SITE = {
   vk: 'https://vk.ru/triada_uc',
   tg: 'https://t.me/triada_sar',
   instagram: 'https://www.instagram.com/triada_uc',
+  maxGroup: 'https://max.ru/join/ufBUoaNRwHsWdCMu_hnqoRtesp0pSnQ-rIBVKbcmNR4',
   // ссылку на личку в MAX даёт владелец из приложения (профиль → «Пригласить друзей»); пока пусто — кнопка скрыта
   max: '',
   legal: 'ИП Ефименко Константин Борисович, ИНН 645211162717, ОГРНИП 326645700054008',

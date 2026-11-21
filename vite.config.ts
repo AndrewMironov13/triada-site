@@ -88,6 +88,7 @@ export default defineConfig(({ mode, command }) => {
         VERIFY: [env.VITE_YANDEX_VERIFY && `<meta name="yandex-verification" content="${env.VITE_YANDEX_VERIFY}">`, env.VITE_GOOGLE_VERIFY && `<meta name="google-site-verification" content="${env.VITE_GOOGLE_VERIFY}">`].filter(Boolean).join('\n'),
         JSON_LD: JSON.stringify(jsonLd).replace(/</g, '\\u003c'),
         TEL: SITE.phone.tel, TEL_LABEL: SITE.phone.label, TG_URL: SITE.tg, VK_URL: SITE.vk, IG_URL: SITE.instagram, MAX_URL: SITE.max || '#',
+        MAX_GROUP_URL: SITE.maxGroup,
         MAX_HIDDEN: SITE.max ? '' : ' hidden', LEGAL: SITE.legal, REVIEWS_URL: SITE.reviewsUrl,
         RATING: SITE.rating.value, RATING_NOTE: SITE.rating.note,
         TABS: tabs, LEVELS: levels, SERVICES: services, MINIMUM: minimum, WORKS: works, STEPS: steps, REVIEWS: reviews, FAQ: faq, CENTERS: centers,
